@@ -26,10 +26,10 @@ c = Point(25,33)
 point_list_ = [a,b,c]
 
 def quickhull(point_list):
-	
+
 	for i in point_list:
-		print "x = ", i.x, "  y = ", i.y
-	
+		print("x = ", i.x, "  y = ", i.y)
+
 	return
 
 quickhull(point_list_)
