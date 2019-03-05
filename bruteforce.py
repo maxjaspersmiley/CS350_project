@@ -16,6 +16,7 @@ def bruteforce(point_list):
         y1 = P1.y
                
         for j in range(0, len(point_list)):
+            
             if (i !=j):
  
                 P2 = point_list[j]
@@ -25,6 +26,7 @@ def bruteforce(point_list):
                 sameSide = True
 
                 for k in range(0, len(point_list)):
+            
                     if(j != k) and (i != k):
    
                         P3 = point_list[k]
@@ -40,7 +42,7 @@ def bruteforce(point_list):
 
                 if(sameSide):
                     
-                    print("[",x1,",",y1,"],[",x2,",",y2,"]")
+                    #print("[",x1,",",y1,"],[",x2,",",y2,"]")
 
                     convex_hull.append([P1,P2])
 
