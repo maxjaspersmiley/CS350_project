@@ -33,15 +33,48 @@ n = Point(48,51)
 o = Point(38,6)
 p = Point(23,0)
 q = Point(50,7)
+r = Point(42,2)
 
-point_list_ = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q]
+point_list_ = [d,b,c,a,e,f,g,h,i,q,k,l,m,n,o,p,j,r]
 
 def quickhull(point_list):
 
 	length = len(point_list)
+
+	min_ = point_list[0]
+	max_ = point_list[0]
+	index = 0 
+
+	for i in point_list[1:length]:
+		index += 1
+		if i.x <= min_.x:
+			if i.x == min_.x and i.y < min_.y:
+				min_ = i
+				min_index = index
+			else:
+				min_ = i	
+				min_index = index	
+		if i.x >= max_.x:
+			if i.x == max_.x and i.y > max_.y:
+				max_ = i
+				max_index = index
+			else:
+				max_ = i	
+				max_index = index
+
+#	print "min: ", min_.x,",",min_.y," count: ",min_index	
+#	print "max: ", max_.x,",",max_.y," count: ",max_index
+
+	point_list[min_index] = point_list[0]
+	point_list[0] = min_	
+	point_list[max_index] = point_list[length-1]
+	point_list[length-1] = max_
+
+#	print "min: ", point_list[0]," max: ", point_list[length-1]
+	
 	left = [point_list[0]]
 	right = [point_list[0]]
-#	points = [point_list[0]]
+	
 	for i in point_list[1:length-1]:
 		determinant = point_list[0].x * point_list[length-1].y + i.x * point_list[0].y \
 		+ point_list[length-1].x * i.y - i.x * point_list[length-1].y \
@@ -57,20 +90,19 @@ def quickhull(point_list):
 
 	left += [point_list[length-1]]
 	right += [point_list[length-1]]
-#	print left
-#	print right
-	print "\n\nleft:"
-	for i in range( len(left)): 
-		print left[i].x, ",", left[i].y
-	print "\nright:"
-	for i in range( len(right)):
-		print right[i].x, ",", right[i].y
+	
+#	print "\n\nleft:"
+#	for i in range( len(left)): 
+#		print left[i].x, ",", left[i].y
+#	print "\nright:"
+#	for i in range( len(right)):
+#		print right[i].x, ",", right[i].y
 	
 	points = [point_list[0]]
 	points += quickhull_upper(left)
-	print "returned from upper hull with these points:"
-	for p in points:
-		print p.x,",",p.y	
+#	print "returned from upper hull with these points:"
+#	for p in points:
+#		print p.x,",",p.y	
 	points += quickhull_lower(right)
 	points += [point_list[length-1]]
 	print "\nconvex set:"	
@@ -85,7 +117,6 @@ def quickhull(point_list):
 	return points
 
 def quickhull_upper(point_list):
-
 	length = len(point_list)
 	if length  == 3:
 		return [point_list[1]]
@@ -142,13 +173,13 @@ def quickhull_upper(point_list):
 	right += [point_list[length-1]]
 #	print left
 #	print right
-	print "\n\nconvex_point_upper: ", convex_point.x,",",convex_point.y
-	print "\nleft:"
-	for i in range( len(left)): 
-		print left[i].x, ",", left[i].y
-	print "\nright:"
-	for i in range( len(right)):
-		print right[i].x, ",", right[i].y
+#	print "\n\nconvex_point_upper: ", convex_point.x,",",convex_point.y
+#	print "\nleft:"
+#	for i in range( len(left)): 
+#		print left[i].x, ",", left[i].y
+#	print "\nright:"
+#	for i in range( len(right)):
+#		print right[i].x, ",", right[i].y
 
 	if max_det > 0:
 		points = [convex_point]
@@ -220,13 +251,13 @@ def quickhull_lower(point_list):
 	right += [point_list[length-1]]
 #	print left
 #	print right
-	print "\n\nconvex_point_lower: ", convex_point.x,",",convex_point.y
-	print "\nleft:"
-	for i in range( len(left)): 
-		print left[i].x, ",", left[i].y
-	print "\nright:"
-	for i in range( len(right)):
-		print right[i].x, ",", right[i].y
+#	print "\n\nconvex_point_lower: ", convex_point.x,",",convex_point.y
+#	print "\nleft:"
+#	for i in range( len(left)): 
+#		print left[i].x, ",", left[i].y
+#	print "\nright:"
+#	for i in range( len(right)):
+#		print right[i].x, ",", right[i].y
 
 	if max_det < 0:
 		points = [convex_point]
@@ -241,6 +272,3 @@ def quickhull_lower(point_list):
 	return points
 	
 quickhull(point_list_)
-#print c.x
-#print a.y
-#print b+b
