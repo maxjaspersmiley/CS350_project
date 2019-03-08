@@ -10,6 +10,12 @@ def quickhull(point_list):
 
 	for i in point_list[1:length]:
 		index += 1
+
+		#max added to stop errors
+		min_index = index
+		max_index = index
+
+
 		if i.x <= min_.x:
 			if i.x == min_.x and i.y < min_.y:
 				min_ = i

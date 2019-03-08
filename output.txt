@@ -1,0 +1,7 @@
+brute force:
+	run time: 0.0 seconds
+quickhull
+	run time: 0.0 seconds
+
+
+error messages: 

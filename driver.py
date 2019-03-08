@@ -1,21 +1,19 @@
 import random
 import point_class
 import time
-from bruteforce import bruteforce
-from quick_hull import quickhull, quickhull_upper, quickhull_lower
-
+import math
+from bruteforce_max import brute_force, side_of_line
+from quickhull_max import quickhull, quickhull_upper, quickhull_lower
 
 #minimum and maximum values of x and y
 MIN_VAL = 0
 MAX_VAL = 100
 
 #maximum number of points in graph
-MAX_POINTS = 1000
+MAX_POINTS = 10
 
 #number of datasets we're using
-MAX_SETS = 10
-
-
+MAX_SETS = 1
 
 #generating 2d list for testing
 list_of_lists = []
@@ -28,42 +26,66 @@ for i in range(0, MAX_SETS):
     list_of_lists.append(current_list[:])
     current_list = []
 
-#prints entire 2d list
-#for i in list_of_lists:
-#    print("\n---", end='\n')
-#    for j in i:
-#        print("(",j.x,",",j.y,"),  ", end="")
-
 list_of_times = []
+bf_rets = []
+qh_rets = []
 
 for index, current_list in enumerate(list_of_lists):
+    print("current list:")
+    for p in current_list:
+        print("\t", p.x, ",", p.y)
+
     run_time = time.time_ns()
-    a = bruteforce(current_list)
+    a = brute_force(current_list)
     run_time = time.time_ns() - run_time
     run_time /= 1000000000.0
     list_of_times.append(run_time)
+    bf_rets.append(a)
+
+    print("brute_force:")
+    for p in a:
+        print("\t", p.x, ",", p.y)
 
 f = open("output.txt", 'w')
 
-print("brute force:")
+f.write("brute force:\n")
 for i in list_of_times:
-    print("\trun time: ", i, " seconds")
+    output_string = "\trun time: " + str(i) + " seconds\n"
+    f.write(output_string)
+
+print("\n\n")
 
 list_of_times = []
 for index, current_list in enumerate(list_of_lists):
+    print("current list:")
+    for p in current_list:
+        print("\t", p.x, ",", p.y)
+
     run_time = time.time_ns()
-    a = quickhull(current_list)
+    b = quickhull(current_list)
     run_time = time.time_ns() - run_time
     run_time /= 1000000000.0
     list_of_times.append(run_time)
+    qh_rets = []
 
-print("quickhull")
+    print("quickhull:")
+    for p in b:
+        print("\t", p.x, ",", p.y)
+
+f.write("quickhull\n")
 for i in list_of_times:
-    print("\trun time: ", i, " seconds")
+    output_string = "\trun time: " + str(i) + " seconds\n"
+    f.write(output_string)
 
-#for i in list_of_returns_and_times:
-#    str1 = 'run time: '.join(str(i[0]))
-#    str1.join('\n')
-#    f.write(str1)
-#
+f.write("\n\nerror messages: \n")
+if(len(a) != len(b)):
+    f.write("\tdifferent length lists\n")
+
+#this doesn't work and i don't know why.
+for i in range(0, MAX_SETS):
+    for j in range(0, min(len(bf_rets), len(qh_rets))):
+        bf = bf_rets[i][j]
+        qh = qh_rets[i][j]
+        print(bf.x, ",", bf.y, " = ", qh.x, ",", qh.y)
+
 f.close()

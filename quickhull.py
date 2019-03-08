@@ -105,9 +105,9 @@ def quickhull(point_list):
 #		print p.x,",",p.y
 	points += quickhull_lower(right)
 	points += [point_list[length-1]]
-#	print "\nconvex set:"	
+#	print "\nconvex set:"
 	for p in points:
-		print p.x,",",p.y
+		print(p.x,",",p.y)
 
 #	print points
 #		print i.x
