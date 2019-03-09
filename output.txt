@@ -1,7 +1,4 @@
 brute force:
-	run time: 0.0 seconds
+	run time: 0.0129649 seconds
 quickhull
 	run time: 0.0 seconds
-
-
-error messages: 

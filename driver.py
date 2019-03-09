@@ -6,13 +6,14 @@ from bruteforce_max import brute_force, side_of_line
 from quickhull_max import quickhull, quickhull_upper, quickhull_lower
 
 #minimum and maximum values of x and y
-MIN_VAL = 0
-MAX_VAL = 100
+MIN_VAL = 4
+MAX_VAL = 96
 
 #maximum number of points in graph
-MAX_POINTS = 10
+MAX_POINTS = 50
 
 #number of datasets we're using
+#our test will break if we increase this
 MAX_SETS = 1
 
 #generating 2d list for testing
@@ -30,10 +31,26 @@ list_of_times = []
 bf_rets = []
 qh_rets = []
 
+
+#rough way to test hulls being drawn
+extra_points = []
+MAX_POINTS = MAX_POINTS + 8
+extra_points.append(point_class.Point(3,3))
+extra_points.append(point_class.Point(50,0))
+extra_points.append(point_class.Point(97,3))
+extra_points.append(point_class.Point(100,50))
+extra_points.append(point_class.Point(97,97))
+extra_points.append(point_class.Point(50,100))
+extra_points.append(point_class.Point(3,97))
+extra_points.append(point_class.Point(0,50))
+
+for i in extra_points:
+    list_of_lists[0].append(i)
+
 for index, current_list in enumerate(list_of_lists):
-    print("current list:")
-    for p in current_list:
-        print("\t", p.x, ",", p.y)
+#    print("current list:")
+#    for p in current_list:
+#        print("\t", p.x, ",", p.y)
 
     run_time = time.time_ns()
     a = brute_force(current_list)
@@ -57,9 +74,9 @@ print("\n\n")
 
 list_of_times = []
 for index, current_list in enumerate(list_of_lists):
-    print("current list:")
-    for p in current_list:
-        print("\t", p.x, ",", p.y)
+#    print("current list:")
+#    for p in current_list:
+#        print("\t", p.x, ",", p.y)
 
     run_time = time.time_ns()
     b = quickhull(current_list)
@@ -77,15 +94,5 @@ for i in list_of_times:
     output_string = "\trun time: " + str(i) + " seconds\n"
     f.write(output_string)
 
-f.write("\n\nerror messages: \n")
-if(len(a) != len(b)):
-    f.write("\tdifferent length lists\n")
-
-#this doesn't work and i don't know why.
-for i in range(0, MAX_SETS):
-    for j in range(0, min(len(bf_rets), len(qh_rets))):
-        bf = bf_rets[i][j]
-        qh = qh_rets[i][j]
-        print(bf.x, ",", bf.y, " = ", qh.x, ",", qh.y)
 
 f.close()
