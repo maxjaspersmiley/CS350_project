@@ -154,7 +154,7 @@ def quickhull_lower(point_list):
 
 	if max_det < 0:
 		points = [convex_point]
-	points +=  quickhull_upper(left)
-	points +=  quickhull_upper(right)
+	points +=  quickhull_lower(left)
+	points +=  quickhull_lower(right)
 
 	return points
