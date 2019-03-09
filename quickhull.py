@@ -44,6 +44,8 @@ def quickhull(point_list):
 	min_ = point_list[0]
 	max_ = point_list[0]
 	index = 0
+	min_index = 0
+	max_index = 0
 
 	for i in point_list[1:length]:
 		index += 1
