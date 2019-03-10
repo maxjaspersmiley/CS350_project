@@ -1,4 +1,4 @@
 brute force:
-	run time: 0.0469768 seconds
+	run time: 0.0359788 seconds
 quickhull
-	run time: 0.0009973 seconds
+	run time: 0.0009943 seconds
