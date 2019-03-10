@@ -10,12 +10,6 @@ def quickhull(point_list):
 
 	for i in point_list[1:length]:
 		index += 1
-
-		#max added to stop errors
-		min_index = index
-		max_index = index
-
-
 		if i.x <= min_.x:
 			if i.x == min_.x and i.y < min_.y:
 				min_ = i
@@ -160,7 +154,7 @@ def quickhull_lower(point_list):
 
 	if max_det < 0:
 		points = [convex_point]
-	points +=  quickhull_upper(left)
-	points +=  quickhull_upper(right)
+	points +=  quickhull_lower(left)
+	points +=  quickhull_lower(right)
 
 	return points

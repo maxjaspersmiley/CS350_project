@@ -6,11 +6,11 @@ from bruteforce_max import brute_force, side_of_line
 from quickhull_max import quickhull, quickhull_upper, quickhull_lower
 
 #minimum and maximum values of x and y
-MIN_VAL = 4
-MAX_VAL = 96
+MIN_VAL = 0
+MAX_VAL = 100
 
 #maximum number of points in graph
-MAX_POINTS = 50
+MAX_POINTS = 100
 
 #number of datasets we're using
 #our test will break if we increase this
@@ -31,7 +31,7 @@ list_of_times = []
 bf_rets = []
 qh_rets = []
 
-
+"""
 #rough way to test hulls being drawn
 extra_points = []
 MAX_POINTS = MAX_POINTS + 8
@@ -46,7 +46,7 @@ extra_points.append(point_class.Point(0,50))
 
 for i in extra_points:
     list_of_lists[0].append(i)
-
+"""
 for index, current_list in enumerate(list_of_lists):
 #    print("current list:")
 #    for p in current_list:
@@ -57,11 +57,13 @@ for index, current_list in enumerate(list_of_lists):
     run_time = time.time_ns() - run_time
     run_time /= 1000000000.0
     list_of_times.append(run_time)
+    a = sorted(a)
     bf_rets.append(a)
 
     print("brute_force:")
     for p in a:
         print("\t", p.x, ",", p.y)
+    print("# of items: ", len(a))
 
 f = open("output.txt", 'w')
 
@@ -83,16 +85,20 @@ for index, current_list in enumerate(list_of_lists):
     run_time = time.time_ns() - run_time
     run_time /= 1000000000.0
     list_of_times.append(run_time)
-    qh_rets = []
+    b.sort()
+    qh_rets.append(b)
 
     print("quickhull:")
     for p in b:
         print("\t", p.x, ",", p.y)
+    print("# of items: ", len(b))
 
 f.write("quickhull\n")
 for i in list_of_times:
     output_string = "\trun time: " + str(i) + " seconds\n"
     f.write(output_string)
+
+
 
 
 f.close()

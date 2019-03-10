@@ -1,3 +1,5 @@
+
+
 class Point:
   def __init__(self, x, y):
     self.x, self.y = x, y
@@ -107,7 +109,7 @@ def quickhull(point_list):
 	points += [point_list[length-1]]
 #	print "\nconvex set:"
 	for p in points:
-		print(p.x,",",p.y)
+		print p.x,",",p.y
 
 #	print points
 #		print i.x
@@ -261,8 +263,8 @@ def quickhull_lower(point_list):
 
 	if max_det < 0:
 		points = [convex_point]
-	points +=  quickhull_upper(left)
-	points +=  quickhull_upper(right)
+	points +=  quickhull_lower(left)
+	points +=  quickhull_lower(right)
 
 
 #		print i.x
