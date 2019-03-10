@@ -20,13 +20,12 @@ def bruteforce(point_list):
             x2 = P2.x
             y2 = P2.y
             
-            if (i !=j) and ((x1 != x2) and (y1 != y2)):
+            if (i !=j):
                 
                 sameSide = True
 
                 for k in range(0, len(point_list)):
-                    if(j != k) and (i != k):
-
+                    if(j != k) and (i != k) and ((x1 != x2) and (y1 != y2)):
                         P3 = point_list[k]
                         x3 = P3.x
                         y3 = P3.y
