@@ -1,0 +1,22 @@
+brute force:
+	run time: 57.332749 seconds
+	run time: 61.37292 seconds
+	run time: 63.8094061 seconds
+	run time: 65.5008807 seconds
+	run time: 66.0195248 seconds
+	run time: 66.8841576 seconds
+	run time: 69.4393262 seconds
+	run time: 70.1962986 seconds
+	run time: 71.8908286 seconds
+	run time: 72.1331567 seconds
+	run time: 73.6022555 seconds
+	run time: 74.8488632 seconds
+	run time: 75.3325979 seconds
+	run time: 75.7096183 seconds
+	run time: 76.0187689 seconds
+	run time: 76.5523661 seconds
+	run time: 77.9127054 seconds
+	run time: 78.5758959 seconds
+	run time: 80.6394106 seconds
+	run time: 80.8797356 seconds
+average time: 71.73257328499999

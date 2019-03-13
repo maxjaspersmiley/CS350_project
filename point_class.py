@@ -3,7 +3,7 @@ class Point:
         self.x, self.y = x, y
 
     def __str__(self):
-        return "("+self.x+","+self.y+")"
+        return "("+str(self.x)+","+str(self.y)+")"
 
     #return "{}, {}".format(self.x, self.y)
 

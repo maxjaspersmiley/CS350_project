@@ -49,7 +49,8 @@ def driver_function(output_name, MAX_POINTS, MAX_SETS):
         list_of_lists[0].append(i)
     """
 
-    print("\n\nbruteforce:")
+
+#    print("\n\nbruteforce:")
     for index, current_list in enumerate(list_of_lists):
     #    print("current list:")
     #    for p in current_list:
@@ -65,7 +66,7 @@ def driver_function(output_name, MAX_POINTS, MAX_SETS):
 
     #    for p in a:
     #        print("\t", p.x, ",", p.y)
-        print("# of items: ", len(a))
+    #    print("# of items: ", len(a))
 
     f = open(output_name+"bf.txt", 'w')
     f.write("brute force:\n")
@@ -83,7 +84,7 @@ def driver_function(output_name, MAX_POINTS, MAX_SETS):
     if(average_time > max_average_time):
         max_average_time = average_time
 
-    print("\n\nquickhull:")
+#    print("\n\nquickhull:")
 
     list_of_times = []
     for index, current_list in enumerate(list_of_lists):
@@ -101,7 +102,7 @@ def driver_function(output_name, MAX_POINTS, MAX_SETS):
 
     #    for p in b:
     #        print("\t", p.x, ",", p.y)
-        print("# of items: ", len(b))
+    #    print("# of items: ", len(b))
 
     g = open(output_name+"qh.txt", 'w')
     g.write("quickhull\n")
@@ -118,6 +119,24 @@ def driver_function(output_name, MAX_POINTS, MAX_SETS):
 
     if(average_time > max_average_time):
         max_average_time = average_time
+
+    bf_rets = sorted(bf_rets)
+    qh_rets = sorted(qh_rets)
+
+    if(bf_rets == qh_rets):
+        print("returns match!")
+    else:
+        h = open(output_name+"_ERROR_LOG.txt", 'w')
+        print("ERROR RETURNS DO NOT MATCH")
+        for bf, qh in zip(bf_rets, qh_rets):
+            h.write("     bf             qh")
+            for i, j in zip(bf, qh):
+                b = ""
+                if i != j:
+                    b = "NONMATCHING"
+                h.write(str(i) + " " + str(j) + b)
+        h.close()
+
 
     f.close()
     g.close()
