@@ -1,6 +1,6 @@
 from point_class import Point
 
-def bruteforce(point_list):
+def bruteforce_bad(point_list):
 
     sameSide = False
     convex_hull = []
@@ -32,7 +32,8 @@ def bruteforce(point_list):
                     if (d < 0):
 
                         sameSide = False
-                        break
+
+#                        break
 
             if(sameSide):
 

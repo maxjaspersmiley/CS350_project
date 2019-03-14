@@ -1,0 +1,22 @@
+quickhull
+	run time: 0.0029948 seconds
+	run time: 0.003962 seconds
+	run time: 0.0039891 seconds
+	run time: 0.0039893 seconds
+	run time: 0.0039893 seconds
+	run time: 0.0039903 seconds
+	run time: 0.0040151 seconds
+	run time: 0.0040164 seconds
+	run time: 0.0049556 seconds
+	run time: 0.0049593 seconds
+	run time: 0.0049866 seconds
+	run time: 0.0049866 seconds
+	run time: 0.0049869 seconds
+	run time: 0.0049881 seconds
+	run time: 0.0050151 seconds
+	run time: 0.0059835 seconds
+	run time: 0.0059838 seconds
+	run time: 0.0060112 seconds
+	run time: 0.0079787 seconds
+	run time: 0.0109714 seconds
+average time: 0.0051376550000000005
